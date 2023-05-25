@@ -48,7 +48,7 @@ def quickSort(list, start, end):
     return list
 
 
-array = [9, 4, 6, 15, 2, 200, 7, 0, 2, 125, 5, 1, 3, 4, 8, 1,25, 0, 11]
+array = [9, 4, 6, 15, 2, 200, 7, 0, 2, 125, 5, 1, 3, 4, 8, 1, 25, 0, 11]
 
 
 # print(quickSort(array, 0, len(array)-1))
@@ -72,6 +72,39 @@ def binarySearch(list, value, minNumber, maxNumber):
     return -1
 
 
-newArray = quickSort(array, 0, len(array) - 1)
-print(newArray)
-print(binarySearch(newArray, 9, 0, len(newArray)))
+# newArray = quickSort(array, 0, len(array) - 1)
+# print(newArray)
+# print(binarySearch(newArray, 9, 0, len(newArray)))
+
+
+def pyramidSorting(list):
+    for i in range(int(len(list) / 2) - 1, -1, -1):
+        heap(list, len(list), i)
+
+    for i in range(len(list) - 1, -1, -1):
+        temp = list[0]
+        list[0] = list[i]
+        list[i] = temp
+        heap(list, i, 0)
+    return list
+
+
+def heap(arr, heapSize, rootIndex):
+    largest = rootIndex
+    leftChild = 2 * rootIndex + 1
+    rightChild = 2 * rootIndex + 2
+
+    if leftChild < heapSize and arr[leftChild] > arr[largest]:
+        largest = leftChild
+    if rightChild < heapSize and arr[rightChild] > arr[largest]:
+        largest = rightChild
+
+    if largest != rootIndex:
+        temp = arr[rootIndex]
+        arr[rootIndex] = arr[largest]
+        arr[largest] = temp
+
+        heap(arr, heapSize, largest)
+
+
+print(pyramidSorting(array))
