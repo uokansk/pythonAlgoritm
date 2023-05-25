@@ -51,7 +51,7 @@ def quickSort(list, start, end):
 array = [9, 4, 6, 15, 2, 200, 7, 0, 2, 125, 5, 1, 3, 4, 8, 1, 25, 0, 11]
 
 
-# print(quickSort(array, 0, len(array)-1))
+print(quickSort(array, 0, len(array)-1))
 
 
 def binarySearch(list, value, minNumber, maxNumber):
